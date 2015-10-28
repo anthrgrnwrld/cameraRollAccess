@@ -34,20 +34,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     ライブラリから写真を選択する
     */
     func pickImageFromLibrary() {
+    
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {  //追記
 
-        //写真ライブラリ(カメラロール)表示用のViewControllerを宣言しているという理解
-        let controller = UIImagePickerController()
+            //写真ライブラリ(カメラロール)表示用のViewControllerを宣言しているという理解
+            let controller = UIImagePickerController()
         
-        //おまじないという認識で今は良いと思う
-        controller.delegate = self
+            //おまじないという認識で今は良いと思う
+            controller.delegate = self
         
-        //新しく宣言したViewControllerでカメラとカメラロールのどちらを表示するかを指定
-        //以下はカメラロールの例
-        //.Cameraを指定した場合はカメラを呼び出し(シミュレーター不可)
-        controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            //新しく宣言したViewControllerでカメラとカメラロールのどちらを表示するかを指定
+            //以下はカメラロールの例
+            //.Cameraを指定した場合はカメラを呼び出し(シミュレーター不可)
+            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
-        //新たに追加したカメラロール表示ViewControllerをpresentViewControllerにする
-        self.presentViewController(controller, animated: true, completion: nil)
+            //新たに追加したカメラロール表示ViewControllerをpresentViewControllerにする
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
     
     /**
